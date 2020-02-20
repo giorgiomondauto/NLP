@@ -1,6 +1,6 @@
-#### Transformer Architecture
+## Transformer Architecture
 
-##### Introduction
+### Introduction
 Transformers are a type of Neural Network Architecture and they were developed to solve the problem of neural machine translation: any tasks that transforms an input sequence to an output sequence (e.g. speech recognition, text - to - speech transformation, etc.)
 
 For models to perform neural machine translation, it is necessary to have some sort of memory. 
@@ -11,7 +11,7 @@ In this example, the word “the band” in the second sentence refers to the ba
 For translating sentences like that, a model has to be able to capture those connections. 
 Recurrent Neural Networks (RNNs) and Convolutional Neural Networks (CNNs) have been used to deal with this problem because of their properties. 
 
-##### Recurrent Neural Networks
+### Recurrent Neural Networks
 Recurrent Neural Networks involve loops within the network allowing information to persist. Each word in a text represent an input for the network,
 and each network passes the information of the previous words to the next network	that can use and process that information.
 
@@ -35,7 +35,7 @@ and there is no consideration of what is important and what is not.
 
 This problem is overcome by Long short term memory LSTM.
 
-##### Long-Short Term Memory (LSTM)
+### Long-Short Term Memory (LSTM)
 LSTMs make small modifications to the information by multiplications and additions. With LSTMs, the information flows through a mechanism known as cell states. 
 In this way, LSTMs can selectively remember or forget things that are important and not so important.
 
