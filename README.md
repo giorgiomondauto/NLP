@@ -1,7 +1,7 @@
 ## Transformer Architecture
 
 ### Introduction
-Transformers are a type of Neural Network Architecture and they were developed to solve the problem of neural machine translation: any tasks that transforms an input sequence to an output sequence (e.g. speech recognition, text - to - speech transformation, etc.)
+Transformers are a type of Neural Network Architecture and they were developed to solve the problem of neural machine translation: any task that transforms an input sequence to an output sequence (e.g. speech recognition, text - to - speech transformation, etc.)
 
 For models to perform neural machine translation, it is necessary to have some sort of memory. 
 For example let’s say that we are translating the following sentence to another language (French):
@@ -15,13 +15,13 @@ Recurrent Neural Networks (RNNs) and Convolutional Neural Networks (CNNs) have b
 Recurrent Neural Networks involve loops within the network allowing information to persist. Each word in a text represent an input for the network,
 and each network passes the information of the previous words to the next network	that can use and process that information.
 
-The problem of long-term dependencies
+##### The problem of long-term dependencies
 Consider a language model that is trying to predict the next word based on the previous ones. If we are trying to predict the next word of the sentence “the clouds in the (sky)”, we don’t need further context because
  it is pretty obvious that the next word is going to be sky.
 
 But there are cases where we need more context. For example, let’s say that you are trying to predict the last word of the text: 
-“I grew up in France. I speak fluent (-)”. Recent information  (I speak fluent) suggests that the next word is probably a language,
-but if we want to narrow down which language, we need context of France,  which is in the previous sentence. We need a language model that is able to capture those dependencies/connections.
+“I grew up in France. I speak fluent (-)”. Recent information (I speak fluent) suggests that the next word is probably a language,
+but if we want to narrow down which language, we need context of France, which is in the previous sentence. We need a language model that is able to capture those dependencies/connections.
 
 RNNs become very ineffective when the gap between the relevant information and the point where it is needed become very large. 
 Because since the information is passed at each step, the longer the chain is the more probable the information is lost along the chain.
