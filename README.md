@@ -1,7 +1,7 @@
 ## Transformer Architecture
 
 ### Introduction
-Transformers are a type of Neural Network Architecture and they were developed to solve the problem of neural machine translation: any tasks that transforms an input sequence to an output sequence (e.g. speech recognition, text - to - speech transformation, etc.)
+Transformers are a type of Neural Network Architecture and they were developed to solve the problem of neural machine translation: any task that transforms an input sequence to an output sequence (e.g. speech recognition, text - to - speech transformation, etc.)
 
 For models to perform neural machine translation, it is necessary to have some sort of memory. 
 For example let’s say that we are translating the following sentence to another language (French):
@@ -15,13 +15,13 @@ Recurrent Neural Networks (RNNs) and Convolutional Neural Networks (CNNs) have b
 Recurrent Neural Networks involve loops within the network allowing information to persist. Each word in a text represent an input for the network,
 and each network passes the information of the previous words to the next network	that can use and process that information.
 
-The problem of long-term dependencies
+##### The problem of long-term dependencies
 Consider a language model that is trying to predict the next word based on the previous ones. If we are trying to predict the next word of the sentence “the clouds in the (sky)”, we don’t need further context because
  it is pretty obvious that the next word is going to be sky.
 
 But there are cases where we need more context. For example, let’s say that you are trying to predict the last word of the text: 
-“I grew up in France. I speak fluent (-)”. Recent information  (I speak fluent) suggests that the next word is probably a language,
-but if we want to narrow down which language, we need context of France,  which is in the previous sentence. We need a language model that is able to capture those dependencies/connections.
+“I grew up in France. I speak fluent (-)”. Recent information (I speak fluent) suggests that the next word is probably a language,
+but if we want to narrow down which language, we need context of France, which is in the previous sentence. We need a language model that is able to capture those dependencies/connections.
 
 RNNs become very ineffective when the gap between the relevant information and the point where it is needed become very large. 
 Because since the information is passed at each step, the longer the chain is the more probable the information is lost along the chain.
@@ -52,6 +52,38 @@ That means that when sentences are long, the model often forgets the content of 
 
 One big problem of LSTMs and RNNs is: Distance between positions is linear
 
+### Now Transformer
+go here: https://www.analyticsvidhya.com/blog/2019/06/understanding-transformers-nlp-state-of-the-art-models/
+The idea befin transformer is to handle the dependencies between input and output with attention and recurrence completely. 
+Take the transformer architecture:
+Now focus on the below image. The Encoder block has 1 layer of a Multi-Head Attention followed by another layer of Feed Forward Neural Network. The decoder, on the other hand, has an extra Masked Multi-Head Attention.
+
+The encoder and decoder blocks are actually multiple identical encoders and decoders stacked on top of each other. Both the encoder stack and the decoder stack have the same number of units.
+In the paper, 6 encoders and decoders have been used.
+Steps:
+
+- The word embeddings of the input sequence are passed to the first encoder
+- These are then transformed and propagated to the next encoder
+- The output from the last encoder in the encoder-stack is passed to all the decoders in the decoder-stack as shown in the figure
+
+An important thing to note here – in addition to the self-attention and feed-forward layers, the decoders also have one more layer of Encoder-Decoder Attention layer. This helps the decoder focus on the appropriate parts of the input sequence.
+"the animal did not cross the street because it was too wide"
+
+Is it referring to the street or to the animal? It’s a simple question for us but not for an algorithm. When the model is processing the word “it”, self-attention tries to associate “it” with “animal” in the same sentence.
+
+Self-attention allows the model to look at the other words in the input sequence to get a better understanding of a certain word in the sequence. 
+
+Calculating Self-Attention
+I have divided this section into various steps for ease of understanding.
+
+1. First, we need to create three vectors from each of the encoder’s input vectors:
+
+Query Vector
+Key Vector
+Value Vector.
+These vectors are trained and updated during the training process.
+
+2. Next, we will calculate self-attention for every word in the input sequence
 
 Reference including images/diagrams: https://towardsdatascience.com/transformers-141e32e69591
 Word embedding - word2vec: https://medium.com/deeper-learning/glossary-of-deep-learning-word-embedding-f90c3cec34ca
